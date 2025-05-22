@@ -11,7 +11,7 @@ class Engine:
     def __init__(self, local_setup_info:dict={}) -> None:
         """Initialize Engine"""
         # task:str='twc', num_seeds:int=0, sub_goals:str="True"
-        task = local_setup_info['task']
+        task = local_setup_info['env_select']
         num_seeds = local_setup_info['num_seeds']
         engine_sub_goals = local_setup_info['engine_sub_goals']
         # Set the environment
