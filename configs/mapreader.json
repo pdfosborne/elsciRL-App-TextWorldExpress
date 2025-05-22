@@ -6,5 +6,5 @@
  "sub_goal": ["None"],
  "env_select": "mapreader",
  "num_seeds":5,
- "engin_sub_goals":"False"
+ "engine_sub_goals":"False"
 }
