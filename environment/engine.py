@@ -56,7 +56,7 @@ class Engine:
         
     def reset(self, start_obs:str=None):
         """Fully reset the environment."""
-        obs = self.Environment.reset(seed=0, gameFold="train", generateGoldPath=True)
+        obs, self.infos = self.Environment.reset(seed=0, gameFold="train", generateGoldPath=True)
         reward = 0
         terminated = False
         return obs
@@ -68,7 +68,7 @@ class Engine:
         if (state=="ENV_RESET")|(action=="ENV_RESET"):
             obs, reward, terminated = self.reset()
         else:  
-            obs, reward, terminated, infos = self.Environment.step(action)
+            obs, reward, terminated, self.infos = self.Environment.step(action)
         
         # Engine gives reward for sub-goals
         # override this with sparse reward instead
@@ -105,7 +105,7 @@ class Engine:
         #         print(obs)
         #         print("Reward from engine = ", reward)
 
-        return obs, reward, terminated, infos
+        return obs, reward, terminated, self.infos
 
     def legal_move_generator(self, obs:any=None):
         """Define legal moves at each position"""
