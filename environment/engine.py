@@ -54,7 +54,7 @@ class Engine:
         print("Gold path: " + str(self.Environment.getGoldActionSequence()))
         print("---------------------------------------------------------")
         
-    def reset(self):
+    def reset(self, start_obs:str=None):
         """Fully reset the environment."""
         obs, self.infos = self.Environment.reset(seed=0, gameFold="train", generateGoldPath=True)
         reward = 0
@@ -111,3 +111,19 @@ class Engine:
         """Define legal moves at each position"""
         legal_moves = sorted(self.infos['validActions'])
         return legal_moves
+
+    def render(self, obs:any=None):
+        """Render the environment."""
+        # This is a text-based environment, so we can return the current state as a string
+        import matplotlib.pyplot as plt
+
+        fig, ax = plt.subplots(figsize=(8, 4))
+        ax.axis('off')
+        ax.text(0.5, 0.5, str(obs), fontsize=12, ha='center', va='center', wrap=True)
+        plt.tight_layout()
+        return fig
+    
+    def close(self):
+        """Close the environment."""
+        self.Environment.close()
+        print("Environment closed.")
