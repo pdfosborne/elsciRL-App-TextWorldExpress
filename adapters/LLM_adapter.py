@@ -9,15 +9,13 @@ from elsciRL.adapters.LLM_state_generators.text_ollama import OllamaAdapter
 
 class Adapter:
     def __init__(self, setup_info:dict={}) -> None:   
-
-             
         # Define observation space
         self.observation_space = Box(low=-1, high=1, shape=(1,384), dtype=np.float32)
 
 
         self.LLM_adapter = OllamaAdapter(
             model_name=setup_info.get('model_name', 'llama3.2'),
-            base_prompt=setup_info.get('system_prompt', 'You are playing a game of Chess.'),
+            base_prompt=setup_info.get('system_prompt', 'You are playing a Text Game.'),
             context_length=2000,
             action_history_length=setup_info.get('action_history_length', 5),
             encoder=setup_info.get('encoder', 'MiniLM_L6v2')
