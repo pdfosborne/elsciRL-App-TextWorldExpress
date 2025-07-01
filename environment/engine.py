@@ -27,6 +27,8 @@ class Engine:
                     'coin': "numLocations=1,numDistractorItems=1,includeDoors=0,limitInventorySize=0",
                     'mapreader': "numLocations=1,maxDistanceApart=1,maxDistractorItemsPerLocation=0,includeDoors=0,limitInventorySize=0"
                     }
+        # DQN Compatibility need to specify action space size
+        self.output_size = 1000
         # If 0 then fixed, otherwise random between limit provided
         if num_seeds==0:
             seed = 0
